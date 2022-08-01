@@ -1,5 +1,6 @@
-// React 만들기 1단계
-// 객체를 DOM으로 변환하는 간단한 DOM Render 함수 작성
+// React 만들기 2단계
+// 더 규모가 커질 프로젝트를 대비해 빌드 할 수 있는 환경을 세팅 
+// webpack과 babel을 설치하여 bundling 세팅
 
 // 만들어진 객체를 DOM으로 변환
 function createDOM(node) {
