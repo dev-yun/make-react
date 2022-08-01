@@ -1,21 +1,7 @@
-// React 만들기 2단계
-// 더 규모가 커질 프로젝트를 대비해 빌드 할 수 있는 환경을 세팅 
-// webpack과 babel을 설치하여 bundling 세팅
+// 3단계
+// react파일(html객체를 DOM 객체로 변환하는 파일)과 개발자가 작성할 실제 코드를 담은 파일을 나눈다.
 
-// 만들어진 객체를 DOM으로 변환
-function createDOM(node) {
-    if(typeof node === 'string'){
-        return document.createTextNode(node);
-    }
-
-    const element = document.createElement(node.tag);
-
-    node.children
-      .map(createDOM)
-      .forEach(element.appendChild.bind(element));
-      
-    return element;
-}
+import { createDOM } from "./react";
 
 // DOM으로 변환할 객체
 // html 태그 구조에는 대그 이름, 속성들, 자식 요소 3가지가 있다.

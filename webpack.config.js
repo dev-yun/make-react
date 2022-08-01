@@ -13,7 +13,7 @@ module.exports = {
     // 현재 개발중인가? 최종적으로 서비스할 파일인가?를 스위칭하는 옵션
     mode: 'development',
     // 입력 정보(시작점이 되는 js파일)
-    entry: './app.js',
+    entry: 'src\app.js',
     // 출력 정보 (객체)
     output: {
         // 결과를 어디에 쓸건지(디렉터리는 OS마다 구조가 조금씩 달라서 모든 OS에서 잘 동작하도록 안전하게 처리)
