@@ -16,6 +16,10 @@ export function createDOM(node) {
     return element;
 }
 
+export function makeElement(tag, props, ...children) {
+    return { tag, props, children }
+}
+
 // container만 받아서 appendchild하는 것을 숨기는 함수
 export function render(vdom, container) {
     container.appendChild(createDOM(vdom));
