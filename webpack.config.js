@@ -22,6 +22,13 @@ module.exports = {
         // 결과의 이름은 뭐로 정할 것 인지
         filename: 'bundle.js',
     },
+
+    devServer: {
+        compress: true,
+        // 실행 port번호 설정(임의로 지정함)
+        port: 9999,
+    },
+
     // module의 기본 구조(rules[{use{loader,option{preset}}}])
     // rules 내에는 loader들이 들어간다.
     module: {
@@ -31,7 +38,7 @@ module.exports = {
                  babel은 js만 transpile하는데, 만약 entry로 이미지, css파일등이 들어오면 처리하지 못한다.
                  이를 대비하여 test에 정규식으로 옵션을 주어서 js파일이 들어올때만 처리하도록 한다.
                 */
-                test: /\.js$/
+                test: /\.js$/,
                 /* exclude 옵션
                  특정 폴더를 제거한다. (node_modules에는 엄청나게 많은 js 파일이 있지만 이들을 번들링할 필요는 없다.)
                  굳이 번들링하지 않아도 되는 폴더를 제외함으로써 번들링 파일의 크기를 줄인다.
