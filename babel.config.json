@@ -1,0 +1,5 @@
+// babel.config 파일은 json 파일이다.
+
+{
+    "presets": ["@babel/preset"]
+}
