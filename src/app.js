@@ -1,17 +1,22 @@
-// 6단계 함수 컴포넌트 기능 추가
-// 컴포넌트란 데이터(props)를 입력바다 상태(state)에 따라 DOM을 출력하는 것이다.
-// 컴포넌트를 사용하면 UI 조각을 js의 모듈화처럼 조각화하여 재사용도 할 수 있고 네이밍을 통해 가독성을 높힐 수 있다.
-// 주의사항 : JSX문법에서 태그에 이름이 대문자라면 이를 문자열로 취급하지 않고 값으로 취급한다. 이때 값은 항상 함수여야하고 JSX를 return 해야하한다.
-// 앞글자가 대문자인 것은 react 자체에서 컴포넌트를 문자열로 취급할지 함수로 취급할지 결정할 조건이기 때문이다.
+// 7단계 클래스 컴포넌트
+// 클래스 컴포넌트는 처음 실행될때 instance를 만들어서 내부에 context와 scope를 갖기 때문에 상태(state)를 갖을 수 있다.
+// 때문에 이미 만들어진 instance의 render를 계속해서 업데이트하면서 상태를 업데이트 할 수 있다. (이렇게 하면 context의 상태를 유지하거나 상태만 변경하여 사용할 수 있다.)
+// 이처럼 하나의 instance를 만들어 component가 삭제될 때까지 context의 상태를 유지하고 render함수를 호출하는 식으로 작동하는 것이 클래스 컴포넌트의 매커니즘이다.
+// React는 class component가 업데이트 될때, 데이터(props)를 받을때, 삭제될때를 모두 파악하고 그때에 필요한 "라이프 사이클 메서드"들을 제공한다.
 
-// 사용자 컴포넌트에는 함수 컴포넌트와 클래스 컴포넌트가 존재한다.
+// 함수 컴포넌트는 호출할때마다 scope가 생성되어 호출되기 때문에 지속적으로 유지되는 상태(state)가 존재하지 않는다. (호출될 때마다 초기화된 상태로 불러오기 때문에)
+// 하지만 함수 컴포넌트에서도 Hook이 등장하면서 상태를 저장할 수 있게 되었고 함수컴포넌트를 사용하는 방식으로 변화하고 있다.
 
 /* @jsx makeElement */
-import { makeElement, render } from "./react";
+import { makeElement, render, Component } from "./react";
 
-// 함수 컴포넌트 작성
-function Title(props) {
-    return <h1>{ props.children }</h1>
+// 클래스 컴포넌트의 요구사항
+// 1. Component를 extends 받아야함
+// 2. render() 함수가 필수로 포함되어야함
+class Title extends Component {
+    render() {
+        return <h1>{ this.props.children }</h1>
+    }
 }
 
 function Item(props) {
@@ -19,8 +24,8 @@ function Item(props) {
 }
 
 
-const vdom = <p>
-    <Title label = "Reactttt">React 정말 잘 만들기</Title>
+const App = () => <p>
+    <Title>React 클래스 컴포넌트 잘 만들기</Title>
     <ul>
         <Item color="red">첫 번째 아이템</Item>
         <Item color="blue">두 번째 아이템</Item>
@@ -30,4 +35,4 @@ const vdom = <p>
 
 const container = document.querySelector("#root");
 
-render(vdom, container)
+render(<App />, container)
