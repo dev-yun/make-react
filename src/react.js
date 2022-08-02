@@ -18,7 +18,19 @@ export function createDOM(node) {
 
 export function makeElement(tag, props, ...children) {
     props = props || {};
-    return { tag, props, children }
+    
+    if (typeof tag === 'function'){
+        if(children.length > 0){
+            return tag({
+                ...props,
+                children : children.length === 1 ? children[0] : children,
+            })
+        }else{
+            return tag(props);
+        }
+    }else{
+        return { tag, props, children }
+    }
 }
 
 // container만 받아서 appendchild하는 것을 숨기는 함수
